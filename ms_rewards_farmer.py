@@ -42,6 +42,10 @@ from exceptions import *
 sys.stdin.reconfigure(encoding='utf-8')
 sys.stdout.reconfigure(encoding='utf-8')
 
+# Update to discord
+
+
+# ----------------------------
 
 # Define user-agents
 PC_USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36 Edg/112.0.1722.58'
@@ -2820,7 +2824,7 @@ def farmer():
         try:
             # input(
             #     '\n\033[94m[INFO] Farmer paused. Press enter to continue...\033[00m\n')
-            # farmer()
+            farmer()
         except KeyboardInterrupt:
             sys.exit("Force Exit (ctrl+c)")
 
@@ -3008,6 +3012,7 @@ if __name__ == '__main__':
     ARGS = argumentParser()
 
     def print(*args, **kwargs):
+
         if ARGS.print_to_webhook and (ARGS.telegram or ARGS.discord):
             sendReportToMessenger("```" + " ".join(args) + " ```")
         return builtins.print(*args, **kwargs)
