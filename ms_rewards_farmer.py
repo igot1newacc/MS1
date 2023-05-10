@@ -2824,6 +2824,7 @@ def farmer():
         try:
             # input(
             #     '\n\033[94m[INFO] Farmer paused. Press enter to continue...\033[00m\n')
+            print("Farmer paused. Press [custom]")
             farmer()
         except KeyboardInterrupt:
             sys.exit("Force Exit (ctrl+c)")
