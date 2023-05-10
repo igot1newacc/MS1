@@ -610,7 +610,7 @@ def handleUnusualActivity(browser: WebDriver, isMobile: bool = False):
         if ARGS.telegram or ARGS.discord:
             message = createMessage()
             sendReportToMessenger(message)
-        input('Press any key to close...')
+        # input('Press any key to close...')
         os._exit(0)
 
 
@@ -1923,7 +1923,7 @@ def logs():
     except json.decoder.JSONDecodeError as e:
         prRed("\n[LOGS] Invalid JSON format in logs file, try to delete logs or fix the error then try again.")
         prRed(str(e))
-        input("Press enter to close...")
+        # input("Press enter to close...")
         os._exit(0)
 
 
@@ -2555,12 +2555,12 @@ def loadAccounts():
             }], indent=4))
         prPurple(f"[ACCOUNT] Accounts credential file '{ACCOUNTS_PATH.name}' created."
                  "\n[ACCOUNT] Edit with your credentials and save, then press any key to continue...")
-        input()
+        # input()
         ACCOUNTS = json.load(open(ACCOUNTS_PATH, "r"))
     except json.decoder.JSONDecodeError as e:
         prRed("\n[ACCOUNTS] Invalid JSON format in accounts file.")
         prRed(str(e))
-        input("Press enter to close...")
+        # input("Press enter to close...")
         os._exit(0)
     finally:
         if ARGS.shuffle:
@@ -2734,14 +2734,14 @@ def farmer():
                     completePunchCards(browser)
                 if not LOGS[CURRENT_ACCOUNT]['More promotions']:
                     completeMorePromotions(browser)
-                if not ARGS.skip_shopping and not LOGS[CURRENT_ACCOUNT]['MSN shopping game']:
-                    finished = False
-                    if ARGS.repeat_shopping:
-                        finished = completeMSNShoppingGame(browser)
-                        prYellow(
-                            "Running repeated MSN shopping. It will likely result in error due to msn shopping likely completed")
-                    if not finished:
-                        completeMSNShoppingGame(browser)
+                # if not ARGS.skip_shopping and not LOGS[CURRENT_ACCOUNT]['MSN shopping game']:
+                #     finished = False
+                #     if ARGS.repeat_shopping:
+                #         finished = completeMSNShoppingGame(browser)
+                #         prYellow(
+                #             "Running repeated MSN shopping. It will likely result in error due to msn shopping likely completed")
+                #     if not finished:
+                #         completeMSNShoppingGame(browser)
                 remainingSearches, remainingSearchesM = getRemainingSearches(
                     browser)
                 MOBILE = bool(remainingSearchesM)
@@ -2811,16 +2811,16 @@ def farmer():
         prBlue(
             '[Driver] Please download correct version of webdriver form link below:')
         prBlue('[Driver] https://chromedriver.chromium.org/downloads')
-        input('Press any key to close...')
+        # input('Press any key to close...')
         sys.exit()
 
     except KeyboardInterrupt:
         ERROR = True
         browser.quit()
         try:
-            input(
-                '\n\033[94m[INFO] Farmer paused. Press enter to continue...\033[00m\n')
-            farmer()
+            # input(
+            #     '\n\033[94m[INFO] Farmer paused. Press enter to continue...\033[00m\n')
+            # farmer()
         except KeyboardInterrupt:
             sys.exit("Force Exit (ctrl+c)")
 
@@ -2888,14 +2888,14 @@ def farmer():
     except RegionException:
         browser.quit()
         prRed('[ERROR] Microsoft Rewards is not available in this country or region !')
-        input('[ERROR] Press any key to close...')
+        # input('[ERROR] Press any key to close...')
         os._exit(0)
 
     except Exception as e:
         if "executable needs to be in PATH" in str(e):
             prRed('[ERROR] WebDriver not found.\n')
             prRed(str(e))
-            input("Press Enter to close...")
+            # input("Press Enter to close...")
             os._exit(0)
         displayError(e)
         print('\n')
@@ -2930,7 +2930,7 @@ def main():
     if ARGS.account_browser:
         prBlue(f"\n[INFO] Opening session for {ARGS.account_browser[0]}")
         browser = accountBrowser(ARGS.account_browser[0])
-        input("Press Enter to close when you finished...")
+        # input("Press Enter to close when you finished...")
         if browser is not None:
             browser.quit()
     run_at = None
@@ -2988,7 +2988,7 @@ def main():
                 os.system("systemctl hibernate")
         elif ARGS.on_finish == "exit":
             return
-    input('Press enter to close the program...')
+    # input('Press enter to close the program...')
 
 
 def get_version():
@@ -3016,4 +3016,4 @@ if __name__ == '__main__':
         main()
     except Exception as e:
         displayError(e)
-        input("press Enter to close...")
+        # input("press Enter to close...")
